@@ -23,7 +23,7 @@ namespace CsiTest.Controllers
             base.Dispose(disposing);
             _context.Dispose();
         }
-        // GET: RandomNumbers
+        
         public ActionResult Index(string sortOrder)
         {
             sortOrder = sortOrder ?? "";

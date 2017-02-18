@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201702180913585_PopulateRandomNumbers.Designer.cs">
       <DependentUpon>201702180913585_PopulateRandomNumbers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702181408100_clearDatabase.cs" />
+    <Compile Include="Migrations\201702181408100_clearDatabase.Designer.cs">
+      <DependentUpon>201702181408100_clearDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -265,8 +269,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -305,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702180913585_PopulateRandomNumbers.resx">
       <DependentUpon>201702180913585_PopulateRandomNumbers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702181408100_clearDatabase.resx">
+      <DependentUpon>201702181408100_clearDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
