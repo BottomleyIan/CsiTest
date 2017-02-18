@@ -18,6 +18,8 @@ namespace CsiTest.Models
 
         [DisplayName("Sorted Numbers")]
         public string SortedNumbers { get; set; }
+
+        [DisplayName("Sorted Direction")]
         public bool Ascending { get; set; }
 
         public RandomNumber() { }
@@ -47,7 +49,7 @@ namespace CsiTest.Models
             {
                 query = query.OrderByDescending(x => x);
             }
-            return string.Join(",", query);
+            return string.Join(", ", query);
         }
     }
 }

@@ -24,9 +24,25 @@ namespace CsiTest.Controllers
             _context.Dispose();
         }
         // GET: RandomNumbers
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(_context.RandomNumbers);
+            sortOrder = sortOrder ?? "";
+            ViewBag.SortParm = sortOrder; 
+                
+            var numbers = from s in _context.RandomNumbers
+                          select s;
+            switch (sortOrder)
+            {
+                case "asc":
+                    numbers = numbers.OrderBy(s => s.Millis);
+                    break;
+                case "desc":
+                    numbers = numbers.OrderByDescending(s => s.Millis);
+                    break;
+                default:
+                    break;
+            }
+            return View(numbers);
         }
 
         public ActionResult Export()

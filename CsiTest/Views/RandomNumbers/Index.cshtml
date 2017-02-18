@@ -26,16 +26,36 @@
 
 <table class="table">
     <tr>
-        <th>
+        <th class="col-md-2">
+            @if (ViewBag.SortParm != "asc")
+            {
+                <a href="@Url.Action("Index", "RandomNumbers", new { sortOrder = "asc"})">
+                    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                </a>
+            }
+            else
+            {
+                <span class="glyphicon glyphicon-arrow-up text-danger" aria-hidden="true"></span>
+            }
+            @if (ViewBag.SortParm != "desc")
+            {
+            <a href="@Url.Action("Index", "RandomNumbers", new { sortOrder = "desc" })">
+                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+            </a>
+            }
+            else
+            {
+                <span class="glyphicon glyphicon-arrow-down text-danger" aria-hidden="true"></span>
+            }
             @Html.DisplayNameFor(model => model.Millis)
         </th>
-        <th>
+        <th class="col-md-8">
             @Html.DisplayNameFor(model => model.SortedNumbers)
         </th>
-        <th>
+        <th class="col-md-2">
             @Html.DisplayNameFor(model => model.Ascending)
         </th>
-        <th></th>
+        
     </tr>
 
     @foreach (var item in Model)
@@ -48,12 +68,14 @@
                 @Html.DisplayFor(modelItem => item.SortedNumbers)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Ascending)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @if (item.Ascending)
+                {
+                    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true">Ascending</span>
+                }
+                else
+                {
+                    <span class="glyphicon glyphicon-arrow-down" aria-hidden="true">Descending</span>
+                }
             </td>
         </tr>
     }
