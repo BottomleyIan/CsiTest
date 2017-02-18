@@ -1,5 +1,6 @@
 ﻿using CsiTest.ActionResults;
 using CsiTest.Models;
+using CsiTest.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,17 @@ namespace CsiTest.Controllers
             return new XmlResult(_context.RandomNumbers.ToList());
         }
 
-        
+        public ActionResult New()
+        {
+            return View(new NewRandomNumbersViewModel());
+        }
+
+        [HttpPost]
+        public ActionResult Create(NewRandomNumbersViewModel viewModel)
+        {
+            _context.RandomNumbers.Add(new RandomNumber(viewModel));
+            _context.SaveChanges();
+            return RedirectToAction("Index", "RandomNumbers");
+        }
     }
 }
