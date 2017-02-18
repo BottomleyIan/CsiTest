@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Numerics;
 
 namespace CsiTest.Models
 {
@@ -37,19 +38,31 @@ namespace CsiTest.Models
 
         private string SortNumbers(string unsortedNumbers)
         {
-            Regex isNumber = new Regex(@"^\s*[-+]?[0-9]{1,9}\s*$", RegexOptions.Compiled);
+            Regex isNumber = new Regex(@"^\s*[-+]?[0-9]+\s*$", RegexOptions.Compiled);
             var query = from s in unsortedNumbers.Split(',')
                         where isNumber.IsMatch(s)
-                        select long.Parse(s.Trim());
-          
-            //query = query.Where(s => s < int.MaxValue && s > int.MinValue);
-            if (Ascending)
+                        select s.Trim();
+            int max_length = query.Max(s => s.Length);
+            if (max_length < 10)
             {
-                query = query.OrderBy(x => x);
-            }
-            else
+                if (Ascending)
+                {
+                    query = query.OrderBy(x => int.Parse(x));
+                }
+                else
+                {
+                    query = query.OrderByDescending(x => int.Parse(x));
+                }
+            }else
             {
-                query = query.OrderByDescending(x => x);
+                if (Ascending)
+                {
+                    query = query.OrderBy(x => BigInteger.Parse(x));
+                }
+                else
+                {
+                    query = query.OrderByDescending(x => BigInteger.Parse(x));
+                }
             }
             return string.Join(", ", query);
         }
