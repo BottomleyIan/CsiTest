@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201702171716126_InitialModel.Designer.cs">
       <DependentUpon>201702171716126_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702180913585_PopulateRandomNumbers.cs" />
+    <Compile Include="Migrations\201702180913585_PopulateRandomNumbers.Designer.cs">
+      <DependentUpon>201702180913585_PopulateRandomNumbers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -286,6 +290,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702171716126_InitialModel.resx">
       <DependentUpon>201702171716126_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702180913585_PopulateRandomNumbers.resx">
+      <DependentUpon>201702180913585_PopulateRandomNumbers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
