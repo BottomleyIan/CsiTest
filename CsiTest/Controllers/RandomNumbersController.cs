@@ -1,4 +1,5 @@
-﻿using CsiTest.Models;
+﻿using CsiTest.ActionResults;
+using CsiTest.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,5 +27,12 @@ namespace CsiTest.Controllers
         {
             return View(_context.RandomNumbers);
         }
+
+        public ActionResult Export()
+        {
+            return new XmlResult(_context.RandomNumbers.ToList());
+        }
+
+        
     }
 }

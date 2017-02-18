@@ -16,5 +16,7 @@ namespace CsiTest.Models
         [DisplayName("Sorted Numbers")]
         public string SortedNumbers { get; set; }
         public bool Ascending { get; set; }
+
+        
     }
 }

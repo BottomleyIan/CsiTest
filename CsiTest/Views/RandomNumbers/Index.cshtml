@@ -1,14 +1,29 @@
 ﻿@model IEnumerable<CsiTest.Models.RandomNumber>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Random Numbers";
 }
+<row>
+    <div class="col-sm-12">
+        <h2>@ViewBag.Title</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
+    <div class="col-sm-12">
+        <p class="pull-right">
+            <a class="btn btn-default" 
+               href="./Export"
+               download="RandomNumbers.xml">
+                <span class="glyphicon glyphicon-export" aria-hidden="true"></span>
+                Export as XML
+            </a>
+        </p>
+    </div>
+</row>
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -23,23 +38,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Millis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SortedNumbers)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ascending)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Millis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortedNumbers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ascending)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
