@@ -37,10 +37,12 @@ namespace CsiTest.Models
 
         private string SortNumbers(string unsortedNumbers)
         {
-            Regex isNumber = new Regex(@"^\s*[0-9]+\s*$", RegexOptions.Compiled);
+            Regex isNumber = new Regex(@"^\s*[-+]?[0-9]{1,9}\s*$", RegexOptions.Compiled);
             var query = from s in unsortedNumbers.Split(',')
                         where isNumber.IsMatch(s)
-                        select s.Trim();
+                        select long.Parse(s.Trim());
+          
+            //query = query.Where(s => s < int.MaxValue && s > int.MinValue);
             if (Ascending)
             {
                 query = query.OrderBy(x => x);
